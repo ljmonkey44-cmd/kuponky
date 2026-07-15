@@ -100,6 +100,13 @@ const coupons = [
     title: "Doplňení kofeinu",
     desc: "Potřebuješ nabrat více energie? Není problém, zajdeme si na kávičku (a třeba i dortík?)." 
   },
+        {
+    id: "cukr",
+    category: "gastro",
+    emoji: "🍬",
+    title: "Doplňení cukříku",
+    desc: "Máš chuť na nějaký sladký treat? Není problém, dovezu bonbonky." 
+  },
 
   // --- CESTOVÁNÍ & NÁVŠTĚVY ---
   {
@@ -108,6 +115,13 @@ const coupons = [
     emoji: "🚗",
     title: "Dovoz až k domu",
     desc: "Nemusíš jet autobusem ani vlakem. Vyzvednu tě nebo odvezu autem přímo před tvůj dům."
+  },
+    {
+    id: "odvoz",
+    category: "logistika",
+    emoji: "🏎️",
+    title: "Levný taxík z noční akce",
+    desc: "Skončila jsi někde v noci po akci sama a nechce se ti platit taxík ani jet MHD? Vyzvednu tě."
   },
   {
     id: "prespavacka",
