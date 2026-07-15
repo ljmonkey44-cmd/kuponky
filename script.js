@@ -14,6 +14,10 @@ const COOLDOWN_MS = 30 * 24 * 60 * 60 * 1000;
 // DATA KUPONŮ – seřazené podle témat (Celkem 20 kuponů)
 // Každý kupon má unikátní "id", které se používá pro ukládání stavu
 // =====================================================================
+// =====================================================================
+// DATA KUPONŮ – seřazené podle témat (Celkem 27 kuponů)
+// Každý kupon má unikátní "id", které se používá pro ukládání stavu
+// =====================================================================
 const coupons = [
   // --- KATEGORIE: POHODA & ROZMAZLOVÁNÍ ---
   {
@@ -33,6 +37,24 @@ const coupons = [
     emoji: "😴",
     title: "Sladký spánek",
     desc: "Dneska mě nečeká žádné ponocování. Půjdeme spát brzy, budeme se tulit a pořádně se vyspíme dorůžova."
+  },
+  {
+    id: "spatna_nalada",
+    emoji: "🩹",
+    title: "Rychlá záchrana nálady",
+    desc: "Cítíš se pod psa? Aktivuj kupon. Okamžitě volám, píšu, posílám vtipná videa nebo vezu čokoládu – cokoliv, co tě vrátí do pohody."
+  },
+  {
+    id: "sex",
+    emoji: "🔥",
+    title: "Pořádný a vášnivý sex",
+    desc: "Dneska hodíme starosti za hlavu. Slibuji večer plný vášně, svíček a maximálního soustředění jen na tvé nejtajnější touhy."
+  },
+  {
+    id: "masaz_pro_nej",
+    emoji: "💆‍♂️",
+    title: "Hýčkání pro mého muže",
+    desc: "Dneska se role obrací. Svíčky zapálím já, olej si připravím já a ty budeš jen ležet a užívat si masáž ode mě."
   },
 
   // --- KATEGORIE: GASTRO & JÍDLO ---
@@ -78,7 +100,13 @@ const coupons = [
     id: "pomoc",
     emoji: "🛠️",
     title: "Osobní stěhovák / Pomocná ruka",
-    desc: "Potřebuješ s něčím pomoct doma, přestěhovat těžkou krabici nebo něco opravit? Stačí kliknout, beru nářadí a jedu."
+    desc: "Potřebuješ s nejčím pomoct doma, přestěhovat těžkou krabici nebo něco opravit? Stačí kliknout, beru nářadí a jedu."
+  },
+  {
+    id: "videohovor",
+    emoji: "📱",
+    title: "Noční videohovor",
+    desc: "I když jsme od sebe daleko, uděláme si online rande přes kameru. Popovídáme si a klidně budeme u hovoru i usínat."
   },
 
   // --- KATEGORIE: SPOLEČNÉ ZÁŽITKY & RANDE ---
@@ -115,7 +143,7 @@ const coupons = [
   {
     id: "nakupy",
     emoji: "🛍️",
-    title: "Společný nákupní den",
+    title: "Společný nákupní day",
     desc: "Půjdu s tebou nakupovat, budu ti nosit věci do kabinky, trpělivě hodnotit outfity a na konci tě pozvu na kávu a dortík."
   },
 
@@ -143,6 +171,24 @@ const coupons = [
     emoji: "🤝",
     title: "Volná jízdenka na usmíření",
     desc: "Platí po jakékoliv neshodě. Bez zbytečných řečí měníme téma, pevně se obejmeme a jdeme dál s čistým štítem."
+  },
+  {
+    id: "kvetiny",
+    emoji: "💐",
+    title: "Donáška květin",
+    desc: "Chceš si udělat hezčí den nebo vyzdobit pokoj? Aktivuj a do 24 hodin ti doručím (nebo nechám poslat) krásnou kytici."
+  },
+  {
+    id: "kluci",
+    emoji: "🍺",
+    title: "Můj večer s klukama",
+    desc: "Dneska máš absolutní volno na pivo nebo online hry s kamarády. Žádné vyptávání, žádné zprávy – jen tvůj chlapský čas."
+  },
+  {
+    id: "hobby",
+    emoji: "🎮",
+    title: "Můj herní / hobby den",
+    desc: "Dneska mě necháš nerušeně hrát hry na PC/konzoli nebo se věnovat mým koníčkům tak dlouho, jak chci. A ještě mi k tomu přineseš sváču."
   }
 ];
 
