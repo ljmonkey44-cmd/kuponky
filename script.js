@@ -79,6 +79,20 @@ const coupons = [
     title: "Mám chuť na Sushi",
     desc: "Zajdeme společně na naše oblíbené Sushi a pochutnáme si."
   },
+    {
+    id: "uvarit",
+    category: "gastro",
+    emoji: "🧑‍🍳",
+    title: "Pojďme si uvařit",
+    desc: "Uvaříme se spolu dobré jídlo, ať nemusíme utrácet."   
+  },
+      {
+    id: "kava",
+    category: "gastro",
+    emoji: "☕",
+    title: "Doplňení kofeinu",
+    desc: "Potřebuješ nabrat více energie? Není problém, zajdeme si na kávičku (a třeba i dortík?)." 
+  },
 
   // --- CESTOVÁNÍ & NÁVŠTĚVY ---
   {
