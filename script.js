@@ -59,7 +59,7 @@ const coupons = [
     {
     id: "pozornost",
     category: "pohoda",
-    emoji: "💆‍♂️",
+    emoji: "🫠",
     title: "Chci více pozornosti",
     desc: "Dlouho se ti nevěnoval, neozval ani nenapsal? Aktivuj kupon a očekávej změnu."
   },
