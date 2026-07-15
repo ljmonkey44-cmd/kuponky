@@ -53,7 +53,7 @@ const coupons = [
     category: "pohoda",
     emoji: "🫠",
     title: "Chci více pozornosti",
-    desc: "Dlouho se ti nevěnoval, neozval ani nenapsal? Aktivuj kupon a očekávej změnu."
+    desc: "Dlouho jsem se ti nevěnoval, neozval ani nenapsal? Aktivuj kupon a očekávej změnu."
   },
   {
     id: "sex",
