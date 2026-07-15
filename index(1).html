@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Láskyplné kupony pro mou princeznou 🌸</title>
+
+<!-- Google Fonts: Playfair Display pro nadpisy, Montserrat pro text -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Vlastní styly -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Láskyplné kupony pro mou princeznou 🌸</h1>
+  <p>Každý kupon níže je malý slib. Klikni na „Uplatnit kupon“, kdykoliv budeš chtít
+     svůj dárek využít. Jednou uplatněný kupon se na měsíc „odpočine“ a pak
+     se automaticky znovu aktivuje, abys ho mohla použít znovu. 💌</p>
+</header>
+
+<div class="coupon-grid" id="couponGrid">
+  <!-- Kupony se generují dynamicky pomocí JavaScriptu -->
+</div>
+
+<footer>Vytvořeno s láskou, jen pro tebe.</footer>
+
+<!-- Potvrzovací okno (modal) před uplatněním kuponu -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-icon" id="modalIcon"></div>
+    <h2 id="modalTitle">Opravdu chceš uplatnit tento kupon?</h2>
+    <p id="modalDesc"></p>
+    <div class="modal-actions">
+      <button class="btn-cancel" id="modalCancel">Zrušit</button>
+      <button class="btn-confirm" id="modalConfirm">Ano, uplatnit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Knihovna pro konfety (oslavná animace při uplatnění kuponu) -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+<!-- Vlastní logika -->
+<script src="script.js"></script>
+
+</body>
+</html>
