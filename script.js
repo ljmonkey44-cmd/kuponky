@@ -11,10 +11,11 @@ const STORAGE_KEY = "laskyplne_kupony_stav";
 const COOLDOWN_MS = 30 * 24 * 60 * 60 * 1000;
 
 // =====================================================================
-// DATA KUPONŮ – uprav / přidávej kupony přímo tady
+// DATA KUPONŮ – seřazené podle témat (Celkem 20 kuponů)
 // Každý kupon má unikátní "id", které se používá pro ukládání stavu
 // =====================================================================
 const coupons = [
+  // --- KATEGORIE: POHODA & ROZMAZLOVÁNÍ ---
   {
     id: "masaz",
     emoji: "💆‍♀️",
@@ -22,29 +23,39 @@ const coupons = [
     desc: "30 minut profi masáže zad nebo nohou s vonným olejem a relaxační hudbou."
   },
   {
+    id: "masaz_kamkoliv",
+    emoji: "🕯️",
+    title: "Masáž na přání (kdekoliv)",
+    desc: "Platí kdekoli – ať už u mě, nebo u tebe. Přivezu si vlastní vonný olej a postarám se o tvůj relax."
+  },
+  {
+    id: "spanek",
+    emoji: "😴",
+    title: "Sladký spánek",
+    desc: "Dneska mě nečeká žádné ponocování. Půjdeme spát brzy, budeme se tulit a pořádně se vyspíme dorůžova."
+  },
+
+  // --- KATEGORIE: GASTRO & JÍDLO ---
+  {
     id: "snidane",
     emoji: "🍳",
     title: "Snídaně do postele",
     desc: "Objednej si cokoliv od palačinek po vajíčka, donáška až pod peřinu s čerstvým čajem."
   },
   {
-    id: "nadobi",
-    emoji: "🧼",
-    title: "Generální stopka nádobí",
-    desc: "Dneska neumyješ ani lžičku. Beru to komplet na sebe, ty nohy nahoru!"
+    id: "donaska",
+    emoji: "🍔",
+    title: "Donáška jídla na dálku",
+    desc: "Máš hlad nebo špatný den a nejsme spolu? Aktivuj kupon a já ti domů objednám a zaplatím tvoje nejoblíbenější jídlo."
   },
   {
-    id: "vylet",
-    emoji: "🚗",
-    title: "Útěk za dobrodružstvím",
-    desc: "Sbal si věci, jedeme na tajný výlet. Cíl cesty, svačinu i program zařizuji já."
+    id: "sushi",
+    emoji: "🍣",
+    title: "Gastro večer u mě",
+    desc: "Přijď ke mně na degustační večer. Připravím tvoje nejoblíbenější dobroty (nebo objednám to nejlepší sushi) a zapálím svíčky."
   },
-  {
-    id: "hadka",
-    emoji: "🏳️",
-    title: "Okamžité vítězství v hádce",
-    desc: "Použij v případě nouze. Okamžitě uznávám tvou pravdu bez jakýchkoliv řečí."
-  },
+
+  // --- KATEGORIE: CESTOVÁNÍ, LOGISTIKA & NÁVŠTĚVY ---
   {
     id: "dovoz",
     emoji: "🚗",
@@ -64,10 +75,18 @@ const coupons = [
     desc: "Uplatni, pokud chceš moji společnost na noc u tebe doma. Sbalím se rychlostí blesku a jedu za tebou."
   },
   {
-    id: "pravidla",
-    emoji: "👑",
-    title: "Celý den podle tvých pravidel",
-    desc: "Od rána do večera dělám přesně to, co chceš ty. Výběr jídla, aktivit i místa je čistě ve tvé režii."
+    id: "pomoc",
+    emoji: "🛠️",
+    title: "Osobní stěhovák / Pomocná ruka",
+    desc: "Potřebuješ s něčím pomoct doma, přestěhovat těžkou krabici nebo něco opravit? Stačí kliknout, beru nářadí a jedu."
+  },
+
+  // --- KATEGORIE: SPOLEČNÉ ZÁŽITKY & RANDE ---
+  {
+    id: "vylet",
+    emoji: "🗺️",
+    title: "Útěk za dobrodružstvím",
+    desc: "Sbal si věci, jedeme na tajný výlet. Cíl cesty, svačinu i program zařizuji já."
   },
   {
     id: "rande",
@@ -82,28 +101,48 @@ const coupons = [
     desc: "Tento kupon tě okamžitě zachrání z nudného dne. Přijedu, 'unesu' tě ven a vymyslím super program."
   },
   {
-    id: "film",
-    emoji: "💻",
-    title: "Virtuální filmový večer",
-    desc: "I když jsme každý jinde, dáme si společný film. Synchronizovaně pustíme film, uděláme si popcorn a budeme na telefonu/FaceTimu."
-  },
-  {
-    id: "donaska",
-    emoji: "🍔",
-    title: "Donáška jídla na dálku",
-    desc: "Máš hlad nebo špatný den a nejsme spolu? Aktivuj kupon a já ti domů objednám a zaplatím tvoje nejoblíbenější jídlo."
-  },
-  {
     id: "piknik",
     emoji: "🧺",
     title: "Piknik pod hvězdami",
     desc: "Sbalím deku, nějaké dobré pití, drobné zobání a vyrazíme na romantické místo sledovat západ slunce nebo hvězdy."
   },
   {
-    id: "masaz_kamkoliv",
-    emoji: "🕯️",
-    title: "Masáž na přání (kdekoliv)",
-    desc: "Platí kdekoli – ať už u mě, nebo u tebe. Přivezu si vlastní vonný olej a postarám se o tvůj relax."
+    id: "film",
+    emoji: "💻",
+    title: "Virtuální filmový večer",
+    desc: "I když jsme každý jinde, dáme si společný film. Synchronizovaně pustíme film, uděláme si popcorn a budeme na telefonu/FaceTimu."
+  },
+  {
+    id: "nakupy",
+    emoji: "🛍️",
+    title: "Společný nákupní den",
+    desc: "Půjdu s tebou nakupovat, budu ti nosit věci do kabinky, trpělivě hodnotit outfity a na konci tě pozvu na kávu a dortík."
+  },
+
+  // --- KATEGORIE: DROBNÉ RADOSTI & ÚLEVY ---
+  {
+    id: "nadobi",
+    emoji: "🧼",
+    title: "Generální stopka nádobí",
+    desc: "Dneska neumyješ ani lžičku. Beru to komplet na sebe, ty nohy nahoru!"
+  },
+  {
+    id: "hadka",
+    emoji: "🏳️",
+    title: "Okamžité vítězství v hádce",
+    desc: "Použij v případě nouze. Okamžitě uznávám tvou pravdu bez jakýchkoliv řečí."
+  },
+  {
+    id: "pravidla",
+    emoji: "👑",
+    title: "Celý den podle tvých pravidel",
+    desc: "Od rána do večera dělám přesně to, co chceš ty. Výběr jídla, aktivit i místa je čistě ve tvé režii."
+  },
+  {
+    id: "usmireni",
+    emoji: "🤝",
+    title: "Volná jízdenka na usmíření",
+    desc: "Platí po jakékoliv neshodě. Bez zbytečných řečí měníme téma, pevně se obejmeme a jdeme dál s čistým štítem."
   }
 ];
 
