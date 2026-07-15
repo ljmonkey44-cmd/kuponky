@@ -1,202 +1,227 @@
 // =====================================================================
-// KONFIGURACE: Sem si vlož svůj přístupový klíč z Web3Forms.com
-// (Zdarma se zaregistruješ na https://web3forms.com a klíč zkopíruješ.)
+// KONFIGURACE: Sem vlož svůj přístupový klíč z Web3Forms.com
 // =====================================================================
 const WEB3FORMS_ACCESS_KEY = "11b0aa14-f5a6-4436-a91d-987c0c79f79f";
 
-// Klíč, pod kterým se stav kuponů ukládá do LocalStorage prohlížeče
 const STORAGE_KEY = "laskyplne_kupony_stav";
+const COOLDOWN_MS = 30 * 24 * 60 * 60 * 1000; // 30 dní
 
-// Za jak dlouho se uplatněný kupon sám znovu aktivuje (1 měsíc = 30 dní)
-const COOLDOWN_MS = 30 * 24 * 60 * 60 * 1000;
+// Definice kategorií pro přehlednost
+const categories = {
+  pohoda: { title: "Pohoda & Rozmazlování", class: "cat-pohoda" },
+  gastro: { title: "Gastro & Dobré jídlo", class: "cat-gastro" },
+  logistika: { title: "Společný čas & Návštěvy", class: "cat-logistika" },
+  rande: { title: "Zážitky & Společné rande", class: "cat-rande" },
+  radosti: { title: "Drobné radosti & Úlevy", class: "cat-radosti" }
+};
 
 // =====================================================================
-// DATA KUPONŮ – seřazené podle témat (Celkem 20 kuponů)
-// Každý kupon má unikátní "id", které se používá pro ukládání stavu
-// =====================================================================
-// =====================================================================
-// DATA KUPONŮ – seřazené podle témat (Celkem 27 kuponů)
-// Každý kupon má unikátní "id", které se používá pro ukládání stavu
+// DATA KUPONŮ (Celkem 27 kuponů roztříděných do kategorií)
 // =====================================================================
 const coupons = [
-  // --- KATEGORIE: POHODA & ROZMAZLOVÁNÍ ---
+  // --- POHODA & ROZMAZLOVÁNÍ ---
   {
     id: "masaz",
+    category: "pohoda",
     emoji: "💆‍♀️",
     title: "Božská masáž",
     desc: "30 minut profi masáže zad nebo nohou s vonným olejem a relaxační hudbou."
   },
   {
     id: "masaz_kamkoliv",
+    category: "pohoda",
     emoji: "🕯️",
-    title: "Masáž na přání (kdekoliv)",
-    desc: "Platí kdekoli – ať už u mě, nebo u tebe. Přivezu si vlastní vonný olej a postarám se o tvůj relax."
+    title: "Masáž na přání",
+    desc: "Platí kdekoli – u mě, nebo u tebe. Přivezu si vlastní vonný olej a postarám se o tvůj relax."
   },
   {
     id: "spanek",
+    category: "pohoda",
     emoji: "😴",
     title: "Sladký spánek",
     desc: "Dneska mě nečeká žádné ponocování. Půjdeme spát brzy, budeme se tulit a pořádně se vyspíme dorůžova."
   },
   {
     id: "spatna_nalada",
+    category: "pohoda",
     emoji: "🩹",
-    title: "Rychlá záchrana nálady",
-    desc: "Cítíš se pod psa? Aktivuj kupon. Okamžitě volám, píšu, posílám vtipná videa nebo vezu čokoládu – cokoliv, co tě vrátí do pohody."
+    title: "Záchrana špatné nálady",
+    desc: "Cítíš se pod psa? Aktivuj kupon. Okamžitě volám, píšu, posílám vtipná videa nebo vezu čokoládu."
   },
   {
     id: "sex",
+    category: "pohoda",
     emoji: "🔥",
-    title: "Pořádný a vášnivý sex",
-    desc: "Dneska hodíme starosti za hlavu. Slibuji večer plný vášně, svíček a maximálního soustředění jen na tvé nejtajnější touhy."
+    title: "Vášnivý sex",
+    desc: "Dneska hodíme starosti za hlavu. Slibuji večer plný vášně, svíček a maximálního soustředění jen na tvé touhy."
   },
   {
     id: "masaz_pro_nej",
+    category: "pohoda",
     emoji: "💆‍♂️",
-    title: "Hýčkání pro mého muže",
-    desc: "Dneska se role obrací. Svíčky zapálím já, olej si připravím já a ty budeš jen ležet a užívat si masáž ode mě."
+    title: "Hýčkání pro něj",
+    desc: "Dneska se role obrací. Svíčky zapálím já, olej si připravím já a ty si budeš užívat masáž ode mě."
   },
 
-  // --- KATEGORIE: GASTRO & JÍDLO ---
+  // --- GASTRO & JÍDLO ---
   {
     id: "snidane",
+    category: "gastro",
     emoji: "🍳",
     title: "Snídaně do postele",
     desc: "Objednej si cokoliv od palačinek po vajíčka, donáška až pod peřinu s čerstvým čajem."
   },
   {
     id: "donaska",
+    category: "gastro",
     emoji: "🍔",
     title: "Donáška jídla na dálku",
-    desc: "Máš hlad nebo špatný den a nejsme spolu? Aktivuj kupon a já ti domů objednám a zaplatím tvoje nejoblíbenější jídlo."
+    desc: "Máš hlad nebo špatný den a nejsme spolu? Aktivuj kupon a já ti domů objednám tvé oblíbené jídlo."
   },
   {
     id: "sushi",
+    category: "gastro",
     emoji: "🍣",
     title: "Gastro večer u mě",
-    desc: "Přijď ke mně na degustační večer. Připravím tvoje nejoblíbenější dobroty (nebo objednám to nejlepší sushi) a zapálím svíčky."
+    desc: "Přijď ke mně na degustační večer. Připravím tvoje nejoblíbenější dobroty (nebo objednám sushi) a zapálím svíčky."
   },
 
-  // --- KATEGORIE: CESTOVÁNÍ, LOGISTIKA & NÁVŠTĚVY ---
+  // --- CESTOVÁNÍ & NÁVŠTĚVY ---
   {
     id: "dovoz",
+    category: "logistika",
     emoji: "🚗",
     title: "Dovoz až k domu",
-    desc: "Nemusíš jet autobusem ani vlakem. Dnes funguji jako tvůj osobní řidič a vyzvednu tě (nebo tě odvezu) přímo před tvým domem."
+    desc: "Nemusíš jet autobusem ani vlakem. Vyzvednu tě nebo odvezu autem přímo před tvůj dům."
   },
   {
     id: "prespavacka",
+    category: "logistika",
     emoji: "🏠",
-    title: "Exkluzivní přespávačka u mě",
+    title: "Přespávačka u mě",
     desc: "Můj pokoj/byt je dnes celý tvůj. Slibuji perfektně ustlanou postel, tvůj oblíbený čaj a stoprocentní pohodlí."
   },
   {
     id: "spani_u_tebe",
+    category: "logistika",
     emoji: "🌙",
     title: "Dnes spím u tebe",
-    desc: "Uplatni, pokud chceš moji společnost na noc u tebe doma. Sbalím se rychlostí blesku a jedu za tebou."
+    desc: "Chceš moji společnost na noc u tebe doma? Sbalím se rychlostí blesku a jedu za tebou."
   },
   {
     id: "pomoc",
+    category: "logistika",
     emoji: "🛠️",
-    title: "Osobní stěhovák / Pomocná ruka",
-    desc: "Potřebuješ s nejčím pomoct doma, přestěhovat těžkou krabici nebo něco opravit? Stačí kliknout, beru nářadí a jedu."
+    title: "Pomocná ruka doma",
+    desc: "Potřebuješ s něčím pomoct doma, přestěhovat těžkou krabici nebo něco opravit? Beru nářadí a jedu."
   },
   {
     id: "videohovor",
+    category: "logistika",
     emoji: "📱",
     title: "Noční videohovor",
-    desc: "I když jsme od sebe daleko, uděláme si online rande přes kameru. Popovídáme si a klidně budeme u hovoru i usínat."
+    desc: "I když jsme od sebe daleko, uděláme si online rande přes kameru a budeme u hovoru klidně i usínat."
   },
 
-  // --- KATEGORIE: SPOLEČNÉ ZÁŽITKY & RANDE ---
+  // --- SPOLEČNÉ ZÁŽITKY ---
   {
     id: "vylet",
+    category: "rande",
     emoji: "🗺️",
     title: "Útěk za dobrodružstvím",
     desc: "Sbal si věci, jedeme na tajný výlet. Cíl cesty, svačinu i program zařizuji já."
   },
   {
     id: "rande",
+    category: "rande",
     emoji: "✨",
     title: "Rande s překvapením",
     desc: "Naplánuji pro nás kompletní rande od A do Z. Ty se jen hezky oblečeš a o nic se nestaráš."
   },
   {
     id: "unos",
+    category: "rande",
     emoji: "🛸",
     title: "Únos ze stereotypu",
-    desc: "Tento kupon tě okamžitě zachrání z nudného dne. Přijedu, 'unesu' tě ven a vymyslím super program."
+    desc: "Tento kupon tě okamžitě zachrání z nudného dne. Přijedu, unesu tě ven a vymyslím super program."
   },
   {
     id: "piknik",
+    category: "rande",
     emoji: "🧺",
     title: "Piknik pod hvězdami",
-    desc: "Sbalím deku, nějaké dobré pití, drobné zobání a vyrazíme na romantické místo sledovat západ slunce nebo hvězdy."
+    desc: "Sbalím deku, dobré pití, drobné zobání a vyrazíme na romantické místo sledovat západ slunce."
   },
   {
     id: "film",
+    category: "rande",
     emoji: "💻",
     title: "Virtuální filmový večer",
-    desc: "I když jsme každý jinde, dáme si společný film. Synchronizovaně pustíme film, uděláme si popcorn a budeme na telefonu/FaceTimu."
+    desc: "Dáme si společný film na dálku. Synchronizovaně ho pustíme, uděláme popcorn a budeme na FaceTimu."
   },
   {
     id: "nakupy",
+    category: "rande",
     emoji: "🛍️",
-    title: "Společný nákupní day",
-    desc: "Půjdu s tebou nakupovat, budu ti nosit věci do kabinky, trpělivě hodnotit outfity a na konci tě pozvu na kávu a dortík."
+    title: "Společný nákupní den",
+    desc: "Půjdu s tebou nakupovat, budu ti nosit věci do kabinky, hodnotit outfity a na konci tě pozvu na kávu."
   },
 
-  // --- KATEGORIE: DROBNÉ RADOSTI & ÚLEVY ---
+  // --- DROBNÉ RADOSTI & ÚLEVY ---
   {
     id: "nadobi",
+    category: "radosti",
     emoji: "🧼",
     title: "Generální stopka nádobí",
     desc: "Dneska neumyješ ani lžičku. Beru to komplet na sebe, ty nohy nahoru!"
   },
   {
     id: "hadka",
+    category: "radosti",
     emoji: "🏳️",
-    title: "Okamžité vítězství v hádce",
+    title: "Vítězství v hádce",
     desc: "Použij v případě nouze. Okamžitě uznávám tvou pravdu bez jakýchkoliv řečí."
   },
   {
     id: "pravidla",
+    category: "radosti",
     emoji: "👑",
-    title: "Celý den podle tvých pravidel",
-    desc: "Od rána do večera dělám přesně to, co chceš ty. Výběr jídla, aktivit i místa je čistě ve tvé režii."
+    title: "Den podle tvých pravidel",
+    desc: "Od rána do večera dělám přesně to, co chceš ty. Výběr jídla i aktivit je čistě ve tvé režii."
   },
   {
     id: "usmireni",
+    category: "radosti",
     emoji: "🤝",
-    title: "Volná jízdenka na usmíření",
-    desc: "Platí po jakékoliv neshodě. Bez zbytečných řečí měníme téma, pevně se obejmeme a jdeme dál s čistým štítem."
+    title: "Jízdenka na usmíření",
+    desc: "Platí po jakékoliv neshodě. Bez řečí měníme téma, pevně se obejmeme a jdeme dál s čistým štítem."
   },
   {
     id: "kvetiny",
+    category: "radosti",
     emoji: "💐",
     title: "Donáška květin",
-    desc: "Chceš si udělat hezčí den nebo vyzdobit pokoj? Aktivuj a do 24 hodin ti doručím (nebo nechám poslat) krásnou kytici."
+    desc: "Chceš si udělat hezčí den nebo vyzdobit pokoj? Do 24 hodin ti doručím krásnou kytici."
   },
   {
     id: "kluci",
+    category: "radosti",
     emoji: "🍺",
-    title: "Můj večer s klukama",
-    desc: "Dneska máš absolutní volno na pivo nebo online hry s kamarády. Žádné vyptávání, žádné zprávy – jen tvůj chlapský čas."
+    title: "Jeho večer s klukama",
+    desc: "Dneska má tvůj kluk absolutní volno na pivo nebo online hry. Žádné zprávy – jen jeho chlapský čas."
   },
   {
     id: "hobby",
+    category: "radosti",
     emoji: "🎮",
-    title: "Můj herní / hobby den",
-    desc: "Dneska mě necháš nerušeně hrát hry na PC/konzoli nebo se věnovat mým koníčkům tak dlouho, jak chci. A ještě mi k tomu přineseš sváču."
+    title: "Jeho herní / hobby den",
+    desc: "Dnes ho necháš nerušeně hrát hry na PC/konzoli tak dlouho, jak chce. A ještě mu k tomu přineseš sváču."
   }
 ];
 
 // =====================================================================
-// POMOCNÉ FUNKCE PRO PRÁCI S LOCALSTORAGE
-// Stav kuponu ukládáme jako { [id]: <timestamp uplatnění v ms> }
+// POMOCNÉ FUNKCE PRO STAV A ČASOVAČE
 // =====================================================================
-
 function loadUsedState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -212,16 +237,10 @@ function saveUsedState(state) {
 
 let usedState = loadUsedState();
 
-// =====================================================================
-// ČASOVÉ POMOCNÉ FUNKCE
-// =====================================================================
-
-// Vrátí true, pokud už uplynul měsíc od uplatnění a kupon se má obnovit
 function isCooldownOver(redeemedAt) {
   return Date.now() - redeemedAt >= COOLDOWN_MS;
 }
 
-// Naformátuje zbývající čas na "12d 04h 33m 10s"
 function formatRemaining(ms) {
   if (ms <= 0) return "0d 00h 00m 00s";
   const totalSeconds = Math.floor(ms / 1000);
@@ -234,57 +253,83 @@ function formatRemaining(ms) {
 }
 
 // =====================================================================
-// VYKRESLENÍ KUPONŮ DO STRÁNKY
+// DYNAMICKÉ VYKRESLENÍ KATEGORIÍ A KUPONŮ
 // =====================================================================
-const grid = document.getElementById("couponGrid");
+const container = document.getElementById("categoriesContainer");
 
 function renderCoupons() {
-  grid.innerHTML = "";
+  container.innerHTML = "";
 
-  coupons.forEach((coupon) => {
-    const redeemedAt = usedState[coupon.id];
-    const isUsed = !!redeemedAt;
+  // Projdeme všechny definované kategorie
+  Object.keys(categories).forEach((catKey) => {
+    const catInfo = categories[catKey];
+    
+    // Filtrujeme kupony, které do této kategorie patří
+    const catCoupons = coupons.filter(c => c.category === catKey);
+    if (catCoupons.length === 0) return;
 
-    const card = document.createElement("div");
-    card.className = "coupon" + (isUsed ? " used" : "");
-    card.dataset.id = coupon.id;
+    // Vytvoříme sekci kategorie
+    const section = document.createElement("section");
+    section.className = "category-section";
 
-    let cooldownHtml = "";
-    if (isUsed) {
-      cooldownHtml = `
-        <div class="cooldown-box">
-          <span class="cooldown-label">Obnoví se za:</span>
-          <div class="cooldown-bar-track">
-            <div class="cooldown-bar-fill" data-timer-bar></div>
+    // Vytvoříme nadpis sekce
+    const heading = document.createElement("h2");
+    heading.className = "category-title";
+    heading.textContent = catInfo.title;
+    section.appendChild(heading);
+
+    // Vytvoříme mřížku pro kupony
+    const grid = document.createElement("div");
+    grid.className = "coupon-grid";
+
+    // Vložíme kupony do mřížky
+    catCoupons.forEach((coupon) => {
+      const redeemedAt = usedState[coupon.id];
+      const isUsed = !!redeemedAt;
+
+      const card = document.createElement("div");
+      // Přidáme základní třídu + třídu pro specifickou barvu kategorie
+      card.className = `coupon ${catInfo.class}` + (isUsed ? " used" : "");
+      card.dataset.id = coupon.id;
+
+      let cooldownHtml = "";
+      if (isUsed) {
+        cooldownHtml = `
+          <div class="cooldown-box">
+            <span class="cooldown-label">Obnoví se za:</span>
+            <div class="cooldown-bar-track">
+              <div class="cooldown-bar-fill" data-timer-bar></div>
+            </div>
+            <span class="cooldown-time" data-timer-text></span>
           </div>
-          <span class="cooldown-time" data-timer-text></span>
-        </div>
+        `;
+      }
+
+      card.innerHTML = `
+        <div class="coupon-icon">${coupon.emoji}</div>
+        <div class="coupon-title">${coupon.title}</div>
+        <div class="coupon-desc">${coupon.desc}</div>
+        ${cooldownHtml}
+        <button class="redeem-btn" ${isUsed ? "disabled" : ""}>
+          ${isUsed ? "Uplatněno" : "Uplatnit kupon"}
+        </button>
       `;
-    }
 
-    card.innerHTML = `
-      <div class="coupon-icon">${coupon.emoji}</div>
-      <div class="coupon-title">${coupon.title}</div>
-      <div class="coupon-desc">${coupon.desc}</div>
-      ${cooldownHtml}
-      <button class="redeem-btn" ${isUsed ? "disabled" : ""}>
-        ${isUsed ? "Uplatněno" : "Uplatnit kupon"}
-      </button>
-    `;
+      const btn = card.querySelector(".redeem-btn");
+      if (!isUsed) {
+        btn.addEventListener("click", () => openConfirmModal(coupon));
+      }
 
-    const btn = card.querySelector(".redeem-btn");
-    if (!isUsed) {
-      btn.addEventListener("click", () => openConfirmModal(coupon));
-    }
+      grid.appendChild(card);
+    });
 
-    grid.appendChild(card);
+    section.appendChild(grid);
+    container.appendChild(section);
   });
 
   updateAllTimers();
 }
 
-// Projde všechny "used" karty a aktualizuje progress bar + zbývající čas.
-// Pokud už kooldown vypršel, kupon rovnou vrátí do aktivního stavu.
 function updateAllTimers() {
   let needsFullRerender = false;
 
@@ -294,7 +339,6 @@ function updateAllTimers() {
     if (!redeemedAt) return;
 
     if (isCooldownOver(redeemedAt)) {
-      // Měsíc uplynul -> kupon se sám aktivuje
       delete usedState[id];
       saveUsedState(usedState);
       needsFullRerender = true;
@@ -316,11 +360,10 @@ function updateAllTimers() {
   }
 }
 
-// Aktualizace časovačů každou sekundu
 setInterval(updateAllTimers, 1000);
 
 // =====================================================================
-// POTVRZOVACÍ MODÁLNÍ OKNO PŘED UPLATNĚNÍM KUPONU
+// POTVRZOVACÍ MODÁLNÍ OKNO
 // =====================================================================
 const modalOverlay = document.getElementById("modalOverlay");
 const modalIcon = document.getElementById("modalIcon");
@@ -344,7 +387,6 @@ function closeConfirmModal() {
 
 modalCancel.addEventListener("click", closeConfirmModal);
 
-// Zavření kliknutím mimo okno
 modalOverlay.addEventListener("click", (e) => {
   if (e.target === modalOverlay) closeConfirmModal();
 });
@@ -354,13 +396,13 @@ modalConfirm.addEventListener("click", () => {
   const coupon = pendingCoupon;
   closeConfirmModal();
 
-  const card = grid.querySelector(`.coupon[data-id="${coupon.id}"]`);
+  const card = document.querySelector(`.coupon[data-id="${coupon.id}"]`);
   const btn = card ? card.querySelector(".redeem-btn") : null;
   redeemCoupon(coupon, card, btn);
 });
 
 // =====================================================================
-// ODESLÁNÍ E-MAILU PŘES WEB3FORMS PŘI UPLATNĚNÍ KUPONU
+// ODESLÁNÍ E-MAILU PŘES WEB3FORMS
 // =====================================================================
 async function sendRedeemNotification(coupon) {
   const payload = {
@@ -381,9 +423,6 @@ async function sendRedeemNotification(coupon) {
   return response.ok;
 }
 
-// =====================================================================
-// OSLAVNÁ ANIMACE - DÉŠŤ KONFET PŘES CELOU OBRAZOVKU
-// =====================================================================
 function launchConfetti() {
   confetti({
     particleCount: 150,
@@ -393,9 +432,6 @@ function launchConfetti() {
   });
 }
 
-// =====================================================================
-// HLAVNÍ LOGIKA UPLATNĚNÍ KUPONU (volá se až PO potvrzení v modálním okně)
-// =====================================================================
 async function redeemCoupon(coupon, card, btn) {
   if (btn) {
     btn.disabled = true;
@@ -405,21 +441,15 @@ async function redeemCoupon(coupon, card, btn) {
   try {
     await sendRedeemNotification(coupon);
   } catch (err) {
-    // I když e-mail selže (např. klíč ještě není nastavený),
-    // kupon se přesto označí jako uplatněný, aby zážitek nebyl narušen.
     console.warn("Odeslání e-mailu se nepodařilo:", err);
   }
 
-  // Uložíme čas uplatnění do LocalStorage, aby zůstal i po zavření prohlížeče
   usedState[coupon.id] = Date.now();
   saveUsedState(usedState);
 
-  // Znovu vykreslíme kupony, aby se zobrazil odpočet
   renderCoupons();
-
-  // Odpálíme konfety na oslavu 🎉
   launchConfetti();
 }
 
-// Prvotní vykreslení stránky
+// Prvotní vykreslení
 renderCoupons();
