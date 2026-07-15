@@ -44,6 +44,96 @@ const coupons = [
     emoji: "🏳️",
     title: "Okamžité vítězství v hádce",
     desc: "Použij v případě nouze. Okamžitě uznávám tvou pravdu bez jakýchkoliv řečí."
+  },
+  {
+    id: "masaz",
+    emoji: "💆‍♀️",
+    title: "Božská masáž",
+    desc: "30 minut profi masáže zad nebo nohou s vonným olejem a relaxační hudbou."[cite: 2]
+  },
+  {
+    id: "snidane",
+    emoji: "🍳",
+    title: "Snídaně do postele",
+    desc: "Objednej si cokoliv od palačinek po vajíčka, donáška až pod peřinu s čerstvým čajem."[cite: 2]
+  },
+  {
+    id: "nadobi",
+    emoji: "🧼",
+    title: "Generální stopka nádobí",
+    desc: "Dneska neumyješ ani lžičku. Beru to komplet na sebe, ty nohy nahoru!"[cite: 2]
+  },
+  {
+    id: "vylet",
+    emoji: "🚗",
+    title: "Útěk za dobrodružstvím",
+    desc: "Sbal si věci, jedeme na tajný výlet. Cíl cesty, svačinu i program zařizuji já."[cite: 2]
+  },
+  {
+    id: "hadka",
+    emoji: "🏳️",
+    title: "Okamžité vítězství v hádce",
+    desc: "Použij v případě nouze. Okamžitě uznávám tvou pravdu bez jakýchkoliv řečí."[cite: 2]
+  },
+  {
+    id: "dovoz",
+    emoji: "🚗",
+    title: "Dovoz až k domu",
+    desc: "Nemusíš jet autobusem ani vlakem. Dnes funguji jako tvůj osobní řidič a vyzvednu tě (nebo tě odvezu) přímo před tvým domem."
+  },
+  {
+    id: "prespavacka",
+    emoji: "🏠",
+    title: "Exkluzivní přespávačka u mě",
+    desc: "Můj pokoj/byt je dnes celý tvůj. Slibuji perfektně ustlanou postel, tvůj oblíbený čaj a stoprocentní pohodlí."
+  },
+  {
+    id: "spani_u_tebe",
+    emoji: "🌙",
+    title: "Dnes spím u tebe",
+    desc: "Uplatni, pokud chceš moji společnost na noc u tebe doma. Sbalím se rychlostí blesku a jedu za tebou."
+  },
+  {
+    id: "pravidla",
+    emoji: "👑",
+    title: "Celý den podle tvých pravidel",
+    desc: "Od rána do večera dělám přesně to, co chceš ty. Výběr jídla, aktivit i místa je čistě ve tvé režii."
+  },
+  {
+    id: "rande",
+    emoji: "✨",
+    title: "Rande s překvapením",
+    desc: "Naplánuji pro nás kompletní rande od A do Z. Ty se jen hezky oblečeš a o nic se nestaráš."
+  },
+  {
+    id: "unos",
+    emoji: "🛸",
+    title: "Únos ze stereotypu",
+    desc: "Tento kupon tě okamžitě zachrání z nudného dne. Přijedu, 'unesu' tě ven a vymyslím super program."
+  },
+  {
+    id: "film",
+    emoji: "💻",
+    title: "Virtuální filmový večer",
+    desc: "I když jsme každý jinde, dáme si společný film. Synchronizovaně pustíme film, uděláme si popcorn a budeme na telefonu/FaceTimu."
+  },
+  {
+    id: "donaska",
+    emoji: "🍔",
+    title: "Donáška jídla na dálku",
+    desc: "Máš hlad nebo špatný den a nejsme spolu? Aktivuj kupon a já ti domů objednám a zaplatím tvoje nejoblíbenější jídlo."
+  },
+  {
+    id: "piknik",
+    emoji: "🧺",
+    title: "Piknik pod hvězdami",
+    desc: "Sbalím deku, nějaké dobré pití, drobné zobání a vyrazíme na romantické místo sledovat západ slunce nebo hvězdy."
+  },
+  {
+    id: "masaz_kamkoliv",
+    emoji: "🕯️",
+    title: "Masáž na přání (kdekoliv)",
+    desc: "Platí kdekoli – ať už u mě, nebo u tebe. Přivezu si vlastní vonný olej a postarám se o tvůj relax."
   }
 ];
 
