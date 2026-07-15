@@ -46,36 +46,6 @@ const coupons = [
     desc: "Použij v případě nouze. Okamžitě uznávám tvou pravdu bez jakýchkoliv řečí."
   },
   {
-    id: "masaz",
-    emoji: "💆‍♀️",
-    title: "Božská masáž",
-    desc: "30 minut profi masáže zad nebo nohou s vonným olejem a relaxační hudbou."[cite: 2]
-  },
-  {
-    id: "snidane",
-    emoji: "🍳",
-    title: "Snídaně do postele",
-    desc: "Objednej si cokoliv od palačinek po vajíčka, donáška až pod peřinu s čerstvým čajem."[cite: 2]
-  },
-  {
-    id: "nadobi",
-    emoji: "🧼",
-    title: "Generální stopka nádobí",
-    desc: "Dneska neumyješ ani lžičku. Beru to komplet na sebe, ty nohy nahoru!"[cite: 2]
-  },
-  {
-    id: "vylet",
-    emoji: "🚗",
-    title: "Útěk za dobrodružstvím",
-    desc: "Sbal si věci, jedeme na tajný výlet. Cíl cesty, svačinu i program zařizuji já."[cite: 2]
-  },
-  {
-    id: "hadka",
-    emoji: "🏳️",
-    title: "Okamžité vítězství v hádce",
-    desc: "Použij v případě nouze. Okamžitě uznávám tvou pravdu bez jakýchkoliv řečí."[cite: 2]
-  },
-  {
     id: "dovoz",
     emoji: "🚗",
     title: "Dovoz až k domu",
