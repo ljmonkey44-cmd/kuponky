@@ -24,43 +24,37 @@ const coupons = [
     id: "masaz",
     category: "pohoda",
     emoji: "💆‍♀️",
-    title: "Božská masáž",
-    desc: "30 minut profi masáže zad nebo nohou s vonným olejem a relaxační hudbou."
+    title: "Profi masáž",
+    desc: "15 minut profi masáže zad nebo nohou s vonným olejem a relaxační hudbou."
   },
   {
     id: "masaz_kamkoliv",
     category: "pohoda",
     emoji: "🕯️",
     title: "Masáž na přání",
-    desc: "Platí kdekoli – u mě, nebo u tebe. Přivezu si vlastní vonný olej a postarám se o tvůj relax."
+    desc: "Platí kamkoliv. :* Řekni mi, o jakou část těla se postarat a já ji zrelaxuji."
   },
-  {
-    id: "spanek",
-    category: "pohoda",
-    emoji: "😴",
-    title: "Sladký spánek",
-    desc: "Dneska mě nečeká žádné ponocování. Půjdeme spát brzy, budeme se tulit a pořádně se vyspíme dorůžova."
-  },
+  
   {
     id: "spatna_nalada",
     category: "pohoda",
     emoji: "🩹",
     title: "Záchrana špatné nálady",
-    desc: "Cítíš se pod psa? Aktivuj kupon. Okamžitě volám, píšu, posílám vtipná videa nebo vezu čokoládu."
+    desc: "Cítíš se pod psa? Aktivuj kupon. Popovídáme si a vyřešíme to."
   },
   {
     id: "sex",
     category: "pohoda",
     emoji: "🔥",
     title: "Vášnivý sex",
-    desc: "Dneska hodíme starosti za hlavu. Slibuji večer plný vášně, svíček a maximálního soustředění jen na tvé touhy."
+    desc: "Dneska hodíme starosti za hlavu. Připrav se na večer plný vášně a maximálního soustředění jen na tvé touhy."
   },
   {
     id: "masaz_pro_nej",
     category: "pohoda",
     emoji: "💆‍♂️",
     title: "Hýčkání pro něj",
-    desc: "Dneska se role obrací. Svíčky zapálím já, olej si připravím já a ty si budeš užívat masáž ode mě."
+    desc: "Dneska se role obrací. Jsem připravena ti dopřát relax a splnění tužeb."
   },
 
   // --- GASTRO & JÍDLO ---
@@ -69,21 +63,21 @@ const coupons = [
     category: "gastro",
     emoji: "🍳",
     title: "Snídaně do postele",
-    desc: "Objednej si cokoliv od palačinek po vajíčka, donáška až pod peřinu s čerstvým čajem."
+    desc: "Objednej si cokoliv od palačinek po vajíčka, donáška až pod peřinu s horkým čajem."
   },
   {
     id: "donaska",
     category: "gastro",
     emoji: "🍔",
     title: "Donáška jídla na dálku",
-    desc: "Máš hlad nebo špatný den a nejsme spolu? Aktivuj kupon a já ti domů objednám tvé oblíbené jídlo."
+    desc: "Máš hlad nebo špatný den a nejsme spolu? Aktivuj kupon a já ti domů objednám jídlo dle představ."
   },
   {
     id: "sushi",
     category: "gastro",
     emoji: "🍣",
-    title: "Gastro večer u mě",
-    desc: "Přijď ke mně na degustační večer. Připravím tvoje nejoblíbenější dobroty (nebo objednám sushi) a zapálím svíčky."
+    title: "Mám chuť na Sushi",
+    desc: "Zajdeme společně na naše oblíbené Sushi a pochutnáme si."
   },
 
   // --- CESTOVÁNÍ & NÁVŠTĚVY ---
@@ -99,27 +93,27 @@ const coupons = [
     category: "logistika",
     emoji: "🏠",
     title: "Přespávačka u mě",
-    desc: "Můj pokoj/byt je dnes celý tvůj. Slibuji perfektně ustlanou postel, tvůj oblíbený čaj a stoprocentní pohodlí."
+    desc: "Tvůj dům je dnes celý volný a chtěla bys mou společnost? Ochráním tě před bubáky."
   },
   {
     id: "spani_u_tebe",
     category: "logistika",
     emoji: "🌙",
     title: "Dnes spím u tebe",
-    desc: "Chceš moji společnost na noc u tebe doma? Sbalím se rychlostí blesku a jedu za tebou."
+    desc: "Nehce se ti spát samotná u sebe? Přijeď ke mně a zachumláme se do peřinky spolu."
   },
   {
     id: "pomoc",
     category: "logistika",
     emoji: "🛠️",
     title: "Pomocná ruka doma",
-    desc: "Potřebuješ s něčím pomoct doma, přestěhovat těžkou krabici nebo něco opravit? Beru nářadí a jedu."
+    desc: "Potřebuješ s něčím pomoct doma, přestěhovat nabýtek něco opravit nebo vyrobit? Beru nářadí a jedu."
   },
   {
     id: "videohovor",
     category: "logistika",
     emoji: "📱",
-    title: "Noční videohovor",
+    title: "Videohovor",
     desc: "I když jsme od sebe daleko, uděláme si online rande přes kameru a budeme u hovoru klidně i usínat."
   },
 
@@ -129,7 +123,7 @@ const coupons = [
     category: "rande",
     emoji: "🗺️",
     title: "Útěk za dobrodružstvím",
-    desc: "Sbal si věci, jedeme na tajný výlet. Cíl cesty, svačinu i program zařizuji já."
+    desc: "Sbal si věci, jedeme na tajný výlet. Cíl cesty a program zařizuji já, ty můžeš vzít něco dobrého k papu."
   },
   {
     id: "rande",
@@ -150,14 +144,14 @@ const coupons = [
     category: "rande",
     emoji: "🧺",
     title: "Piknik pod hvězdami",
-    desc: "Sbalím deku, dobré pití, drobné zobání a vyrazíme na romantické místo sledovat západ slunce."
+    desc: "Sbalím deku, dobré pití, drobné zobání a vyrazíme na romantické místo sledovat oblohu, západ slunce a klidně i hvězdy."
   },
   {
     id: "film",
     category: "rande",
     emoji: "💻",
     title: "Virtuální filmový večer",
-    desc: "Dáme si společný film na dálku. Synchronizovaně ho pustíme, uděláme popcorn a budeme na FaceTimu."
+    desc: "Dáme si společný film na dálku. Synchronizovaně ho pustíme, já si udělám popcorn a budeme na FaceTimu."
   },
   {
     id: "nakupy",
@@ -190,18 +184,11 @@ const coupons = [
     desc: "Od rána do večera dělám přesně to, co chceš ty. Výběr jídla i aktivit je čistě ve tvé režii."
   },
   {
-    id: "usmireni",
-    category: "radosti",
-    emoji: "🤝",
-    title: "Jízdenka na usmíření",
-    desc: "Platí po jakékoliv neshodě. Bez řečí měníme téma, pevně se obejmeme a jdeme dál s čistým štítem."
-  },
-  {
     id: "kvetiny",
     category: "radosti",
     emoji: "💐",
     title: "Donáška květin",
-    desc: "Chceš si udělat hezčí den nebo vyzdobit pokoj? Do 24 hodin ti doručím krásnou kytici."
+    desc: "Chceš si udělat hezčí den nebo vyzdobit pokoj? V blízké době můžeš očekávat krásné kytičky."
   },
   {
     id: "kluci",
@@ -214,8 +201,8 @@ const coupons = [
     id: "hobby",
     category: "radosti",
     emoji: "🎮",
-    title: "Jeho herní / hobby den",
-    desc: "Dnes ho necháš nerušeně hrát hry na PC/konzoli tak dlouho, jak chce. A ještě mu k tomu přineseš sváču."
+    title: "Jeho den",
+    desc: "Dnes ho necháš vybírat aktivity ty. Co se stane je v kartách."
   }
 ];
 
