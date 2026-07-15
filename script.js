@@ -2,7 +2,7 @@
 // KONFIGURACE: Sem si vlož svůj přístupový klíč z Web3Forms.com
 // (Zdarma se zaregistruješ na https://web3forms.com a klíč zkopíruješ.)
 // =====================================================================
-const WEB3FORMS_ACCESS_KEY = "SEM_VLOZ_SVOJ_KLIC";
+const WEB3FORMS_ACCESS_KEY = "11b0aa14-f5a6-4436-a91d-987c0c79f79f";
 
 // Klíč, pod kterým se stav kuponů ukládá do LocalStorage prohlížeče
 const STORAGE_KEY = "laskyplne_kupony_stav";
