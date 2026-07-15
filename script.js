@@ -56,6 +56,13 @@ const coupons = [
     title: "Hýčkání pro něj",
     desc: "Dneska se role obrací. Jsem připravena ti dopřát relax a splnění tužeb."
   },
+    {
+    id: "pozornost",
+    category: "pohoda",
+    emoji: "💆‍♂️",
+    title: "Chci více pozornosti",
+    desc: "Dlouho se ti nevěnoval, neozval ani nenapsal? Aktivuj kupon a očekávej změnu."
+  },
 
   // --- GASTRO & JÍDLO ---
   {
