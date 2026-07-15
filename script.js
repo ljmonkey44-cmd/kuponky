@@ -32,29 +32,21 @@ const coupons = [
     category: "pohoda",
     emoji: "🕯️",
     title: "Masáž na přání",
-    desc: "Platí kamkoliv. :* Řekni mi, o jakou část těla se postarat a já ji zrelaxuji."
+    desc: "Řekni mi, o jakou část těla se postarat a já ji zrelaxuji. Platí kamkoliv. :*"
   },
-  
+    {
+    id: "masaz_pro_nej",
+    category: "pohoda",
+    emoji: "💆‍♂️",
+    title: "Hýčkání pro něj",
+    desc: "Dneska se role obrací. Jsem připravena ti dopřát relax a splnění tužeb."
+  },
   {
     id: "spatna_nalada",
     category: "pohoda",
     emoji: "🩹",
     title: "Záchrana špatné nálady",
     desc: "Cítíš se pod psa? Aktivuj kupon. Popovídáme si a vyřešíme to."
-  },
-  {
-    id: "sex",
-    category: "pohoda",
-    emoji: "🔥",
-    title: "Vášnivý sex",
-    desc: "Dneska hodíme starosti za hlavu. Připrav se na večer plný vášně a maximálního soustředění jen na tvé touhy."
-  },
-  {
-    id: "masaz_pro_nej",
-    category: "pohoda",
-    emoji: "💆‍♂️",
-    title: "Hýčkání pro něj",
-    desc: "Dneska se role obrací. Jsem připravena ti dopřát relax a splnění tužeb."
   },
     {
     id: "pozornost",
@@ -63,7 +55,13 @@ const coupons = [
     title: "Chci více pozornosti",
     desc: "Dlouho se ti nevěnoval, neozval ani nenapsal? Aktivuj kupon a očekávej změnu."
   },
-
+  {
+    id: "sex",
+    category: "pohoda",
+    emoji: "🔥",
+    title: "Vášnivý sex",
+    desc: "Dneska hodíme starosti za hlavu. Připrav se na večer plný vášně a maximálního soustředění jen na tvé touhy."
+  },
   // --- GASTRO & JÍDLO ---
   {
     id: "snidane",
