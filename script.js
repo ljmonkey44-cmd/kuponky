@@ -14,7 +14,7 @@ const categories = {
   logistika: { title: "Společný čas & Návštěvy", class: "cat-logistika" },
   rande: { title: "Zážitky & Společné rande", class: "cat-rande" },
   radosti: { title: "Drobné radosti & Úlevy", class: "cat-radosti" },
-  dalsi: { title: "Další", class: "cat-dalsi" }
+  nove: { title: "Nové", class: "cat-nove" }
 };
 
 // =====================================================================
@@ -253,21 +253,21 @@ const coupons = [
   // --- DALŠÍ ---
   {
     id: "movie_night",
-    category: "dalsi",
+    category: "nove",
     emoji: "🎬",
     title: "Movie night u mě doma",
     desc: "Vybereme film, já zařídím popcorn, zachumláme se do sebe a jdeme koukaat!"
   },
   {
     id: "online_hry",
-    category: "dalsi",
+    category: "nove",
     emoji: "🕹️",
     title: "Společné hraní online her",
     desc: "Zahrajeme si spolu cokoliv, co tě bude bavit. Co třeba jeden kreslí a druhý hádá?"
   },
   {
     id: "jebak",
-    category: "dalsi",
+    category: "nove",
     emoji: "🎯",
     title: "Vymačknutí mého jebáku",
     desc: "Oficiální povolení k beztrestné a detailní dermatologické péči na mém těle."
